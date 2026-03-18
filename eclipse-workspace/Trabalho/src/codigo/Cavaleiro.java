@@ -4,6 +4,8 @@ package codigo;
 
 public class Cavaleiro implements UnidadeMilitar {
 	
+	Estrategia estrategia;
+	
 	int ATKBase = 6;
 	int DEFBase = 5;
 	int INTBase = 2;
@@ -12,7 +14,13 @@ public class Cavaleiro implements UnidadeMilitar {
 	
     @Override
     public void atacar() {
-        System.out.println("Cavaleiro investe com sua lança!");
+
+        if (estrategia != null) {
+            estrategia.executar("Cavaleiro");
+        } else {
+            System.out.println("Cavaleiro investe com sua lança!");
+        }
+
     }
     
     @Override
@@ -27,5 +35,12 @@ public class Cavaleiro implements UnidadeMilitar {
 	public void stats() {
 		 System.out.println("\n=== ATRIBUTOS DO CAVALEIRO === \nAtaque Base: " + ATKBase + "\nDefesa Base: " + DEFBase + "\nInteligência Base: " + INTBase + "\nDefesa Mágica Base: " + DEFMBase + "\nSorte Base: " + SORBase);
 	}
-	 
+	
+	public void setEstrategia(Estrategia estrategia) {
+ 		this.estrategia = estrategia;
+ 	}
+
+ 	public Estrategia getEstrategia() {
+ 		return estrategia;
+ 	}
 }

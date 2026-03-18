@@ -9,4 +9,6 @@ public interface UnidadeMilitar {
     void lista();
     void stats();
     
+    void setEstrategia(Estrategia estrategia);
+    Estrategia getEstrategia();
 }

@@ -7,6 +7,11 @@ import codigo.Estabulo;
 import codigo.Quartel;
 import codigo.ColegioMagia;
 import codigo.UnidadeMilitar;
+import codigo.Estrategia;
+import codigo.EstrategiaAgressiva;
+import codigo.EstrategiaDefensiva;
+import codigo.EstrategiaFlanqueamento;
+
 
 public class Jogo {
 	
@@ -29,7 +34,7 @@ public class Jogo {
         	
         	else if (op == 2) acaoUnidade(scanner, exercito);
         		
-        	else if (op == 3) System.out.println("Tu aqui, Maria");
+        	else if (op == 3) mudarEstrategia(scanner, exercito);
         	
         	else if (op == 4) listarUnidades(exercito);
         		
@@ -105,25 +110,73 @@ public class Jogo {
     }
     
     private static void listarUnidades(List<UnidadeMilitar> exercito) {
-    	
-    	// BOTAR AQUI TAMBÉM A ESTRATÉGIA QUE A UNIDADE ESTÁ USANDO
-    	// EXEMPLO:
-    	// 0) Arqueiro (neutro)
-    	// 1) Cavaleiro (defensivo)
-    	// 2) Mago (ofensivo)
-    	// 3) Arqueiro (flanqueando)
-    	
-    	if (exercito.isEmpty()) {
+
+        if (exercito.isEmpty()) {
             System.out.println("Seu exército está vazio!");
             return;
-    	}
-    	
-    	System.out.println("\n\n===== UNIDADES DO EXÉRCITO === \n");
-    	
-    	for (int i = 0; i < exercito.size(); i++) {
+        }
+
+        System.out.println("\n===== UNIDADES DO EXÉRCITO ===\n");
+
+        for (int i = 0; i < exercito.size(); i++) {
+
+            UnidadeMilitar u = exercito.get(i);
+
+            String estrategia = "Neutra";
+
+            if (u.getEstrategia() != null) {
+                estrategia = u.getEstrategia().nome();
+            }
+
+            System.out.println((i + 1) + ") " +
+                    u.getClass().getSimpleName() +
+                    " (" + estrategia + ")");
+        }
+    }
+    
+    private static void mudarEstrategia(Scanner scanner, List<UnidadeMilitar> exercito) {
+
+        if (exercito.isEmpty()) {
+            System.out.println("Seu exército está vazio!");
+            return;
+        }
+
+        System.out.println("Escolha a unidade:");
+
+        for (int i = 0; i < exercito.size(); i++) {
             System.out.println((i + 1) + ") " + exercito.get(i).getClass().getSimpleName());
         }
-    	
+
+        int index = scanner.nextInt();
+        index--;
+
+        if (index < 0 || index >= exercito.size()) {
+            System.out.println("Índice inválido!");
+            return;
+        }
+
+        UnidadeMilitar unidade = exercito.get(index);
+
+        System.out.println("\nEscolha a estratégia:");
+        System.out.println("1) Ofensiva");
+        System.out.println("2) Defensiva");
+        System.out.println("3) Flanqueamento");
+
+        int tipo = scanner.nextInt();
+
+        Estrategia estrategia = null;
+
+        if (tipo == 1) estrategia = new EstrategiaAgressiva();
+        else if (tipo == 2) estrategia = new EstrategiaDefensiva();
+        else if (tipo == 3) estrategia = new EstrategiaFlanqueamento();
+        else {
+            System.out.println("Estratégia inválida!");
+            return;
+        }
+
+        unidade.setEstrategia(estrategia);
+
+        System.out.println("Estratégia alterada para: " + estrategia.nome());
     }
     
     private static void menuPrincipal() {

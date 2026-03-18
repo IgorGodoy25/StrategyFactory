@@ -4,6 +4,8 @@ package codigo;
 
 public class Arqueiro implements UnidadeMilitar {
 	
+	Estrategia estrategia;
+	
 	int ATKBase = 5;
 	int DEFBase = 3;
 	int INTBase = 2;
@@ -11,9 +13,15 @@ public class Arqueiro implements UnidadeMilitar {
 	int SORBase = 4;
 	
 	@Override
- 	public void atacar() {
-	 	System.out.println("Arqueiro dispara suas flechas!");
- 	}
+	public void atacar() {
+
+		if (estrategia != null) {
+			estrategia.executar("Arqueiro");
+		} else {
+			System.out.println("Arqueiro dispara suas flechas!");
+		}
+
+	}
  
 	@Override
  	public void mover() {
@@ -28,4 +36,11 @@ public class Arqueiro implements UnidadeMilitar {
  		System.out.println("\n=== ATRIBUTOS DO ARQUEIRO === \nAtaque Base: " + ATKBase + "\nDefesa Base: " + DEFBase + "\nInteligência Base: " + INTBase + "\nDefesa Mágica Base: " + DEFMBase + "\nSorte Base: " + SORBase);
  	}
  	
+ 	public void setEstrategia(Estrategia estrategia) {
+ 		this.estrategia = estrategia;
+ 	}
+
+ 	public Estrategia getEstrategia() {
+ 		return estrategia;
+ 	}
 }

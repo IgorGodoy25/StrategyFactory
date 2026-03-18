@@ -4,6 +4,8 @@ package codigo;
 
 public class Mago implements UnidadeMilitar {
 	
+	Estrategia estrategia;
+	
 	int ATKBase = 2;
 	int DEFBase = 2;
 	int INTBase = 7;
@@ -12,7 +14,12 @@ public class Mago implements UnidadeMilitar {
 	
 	 @Override
 	 public void atacar() {
-	     System.out.println("Mago conjura feitiços!");
+		if (estrategia != null) {
+			estrategia.executar("Mago");
+		} else {
+		     System.out.println("Mago conjura feitiços!");
+		}
+
 	 }
 	 
 	 @Override
@@ -27,5 +34,12 @@ public class Mago implements UnidadeMilitar {
 	 public void stats() {
 		 System.out.println("\n=== ATRIBUTOS DO MAGO === \nAtaque Base: " + ATKBase + "\nDefesa Base: " + DEFBase + "\nInteligência Base: " + INTBase + "\nDefesa Mágica Base: " + DEFMBase + "\nSorte Base: " + SORBase);
 	 }
-	 
+
+	 public void setEstrategia(Estrategia estrategia) {
+	 		this.estrategia = estrategia;
+ 	}
+
+ 	public Estrategia getEstrategia() {
+ 		return estrategia;
+ 	}
 }
