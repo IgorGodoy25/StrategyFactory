@@ -11,7 +11,7 @@ import codigo.Estrategia;
 import codigo.EstrategiaAgressiva;
 import codigo.EstrategiaDefensiva;
 import codigo.EstrategiaFlanqueamento;
-
+import codigo.EstrategiaReconhecimento;
 
 public class Jogo {
 	
@@ -156,11 +156,12 @@ public class Jogo {
         }
 
         UnidadeMilitar unidade = exercito.get(index);
-
+        
         System.out.println("\nEscolha a estratégia:");
         System.out.println("1) Ofensiva");
         System.out.println("2) Defensiva");
         System.out.println("3) Flanqueamento");
+        System.out.println("4) Reconhecimento");
 
         int tipo = scanner.nextInt();
 
@@ -169,6 +170,7 @@ public class Jogo {
         if (tipo == 1) estrategia = new EstrategiaAgressiva();
         else if (tipo == 2) estrategia = new EstrategiaDefensiva();
         else if (tipo == 3) estrategia = new EstrategiaFlanqueamento();
+        else if (tipo == 4) estrategia = new EstrategiaReconhecimento();
         else {
             System.out.println("Estratégia inválida!");
             return;
