@@ -1,0 +1,8 @@
+Sugestões de Melhoria
+
+- Atualmente os inimigos são apenas um array, seria interessante criar uma classe Inimigo (Goblin, Ogro, etc) para que eles também possuam sua própria Estrategia ativa,
+assim como o jogador. 
+
+- Com essa criação de Estratégia dos inimigos, a Estratégia de Reconhecimento poderá ter mais utilidade, já que atualmente apenas é sorteada uma frase aleatória.
+
+- Outra possível evolução é alterar os atributos da unidade de acordo com a Estrategia ativa no momento.
