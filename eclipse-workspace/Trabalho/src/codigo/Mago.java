@@ -12,6 +12,7 @@ public class Mago implements UnidadeMilitar {
 	int DEFMBase = 5;
 	int SORBase = 3;
 	
+	
 	 @Override
 	 public void atacar() {
 		if (estrategia != null) {

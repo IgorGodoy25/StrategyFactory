@@ -8,7 +8,7 @@ import codigo.Quartel;
 import codigo.ColegioMagia;
 import codigo.UnidadeMilitar;
 import codigo.Estrategia;
-import codigo.EstrategiaAgressiva;
+import codigo.EstrategiaOfensiva;
 import codigo.EstrategiaDefensiva;
 import codigo.EstrategiaFlanqueamento;
 import codigo.EstrategiaReconhecimento;
@@ -167,7 +167,7 @@ public class Jogo {
 
         Estrategia estrategia = null;
 
-        if (tipo == 1) estrategia = new EstrategiaAgressiva();
+        if (tipo == 1) estrategia = new EstrategiaOfensiva();
         else if (tipo == 2) estrategia = new EstrategiaDefensiva();
         else if (tipo == 3) estrategia = new EstrategiaFlanqueamento();
         else if (tipo == 4) estrategia = new EstrategiaReconhecimento();
