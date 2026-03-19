@@ -1,8 +1,10 @@
 package codigo;
 import java.util.Random;
 
+
+// Essa classe define a estratégia de Reconhecimento, que observa o que os inimigos estão fazendo e reporta para o jogador
+// Sugestões de melhoria em melhorias.txt
 public class EstrategiaReconhecimento implements Estrategia {
-    @Override
     public void executar(String unidade) {
         String[] taticasInimigas = {
             "Goblins em Emboscada nas árvores!", 
@@ -15,8 +17,8 @@ public class EstrategiaReconhecimento implements Estrategia {
         System.out.println("\n[RELATÓRIO DE RECONHECIMENTO]");
         System.out.println(unidade + " subiu em uma torre e avistou: " + taticaAtual);
     }
-
-    @Override
+    
+    // Esse método retorna o nome da tática.
     public String nome() {
         return "Reconhecimento";
     }
